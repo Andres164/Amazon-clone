@@ -1,0 +1,103 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+	background-color: #144883;
+	color: rgb(255, 255, 255);
+	padding: 20px;
+}
+
+h2 {
+	text-align: center;
+	color: red;
+	padding: 20px;
+}
+
+nav ul{
+
+background-color: #757575;
+width: 100%;
+list-style-type: none;
+text-align: center;
+}
+
+nav li{
+	display: inline-flex;
+}
+
+nav a{
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+	width: 150px;
+}
+
+nav li:hover{
+	background-color: black;
+}
+
+.body{
+	margin: 0px;
+	background-color: aliceblue;
+	font-family: 'nerko one', cursive;
+}
+
+.productos{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evently;
+	border: 1px solid blue;
+}
+
+.contenedores{
+  margin: 15px;
+  padding: 2px 16px;
+  position: relative;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+.contenedores:hover{
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.productos img{
+	width: 300px;
+}
+
+.button-add{
+	border: none;
+	font-size:16px ;
+	text-align: center;
+	border-radius: 8px;
+	padding: 15px 32px;
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+	transition-duration: 0.4s;
+	position: absolute;
+	right: 15px;
+	bottom: 10px;
+}
+
+.button-add:hover{
+	background-color: #4CAF50;
+	color: white;
+}
+
+h4 {
+	text-align: center;
+	background-color: #94b7df;
+	color: rgb(255, 255, 255);
+	padding: 10px;
+}
+
+.a{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evently;
+	border: 1px solid blue;
+}
