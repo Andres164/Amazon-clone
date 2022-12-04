@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require 'CRUD/detalles_carrito.php';
+    require 'CRUD/detallesCarrito.php';
     require 'CRUD/carrito.php';
     $carrito_id = READ_carrito($_SESSION['logInUsuario']);
     $carrito_id = mysqli_fetch_array($carrito_id)['carrito_id'];
