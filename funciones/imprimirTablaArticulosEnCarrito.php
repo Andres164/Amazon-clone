@@ -3,6 +3,11 @@ require_once __DIR__ . '/CRUD/detallesCarrito.php';
 $detallesCarrito = READ_detallesCarrito($_SESSION['logInUsuario']);
 $totalArticulos = 0;
 
+echo '
+<table class="table table-bordered">
+    <tbody>
+';
+
 while($detalleCarrito = mysqli_fetch_array($detallesCarrito)) {
     $articulo_ASIN = $detalleCarrito['articulo_ASIN'];
     require_once __DIR__ . '/CRUD/articulos.php';
@@ -32,4 +37,8 @@ if($totalArticulos > 0) {
     </tr>
     ";  
 }
+echo '
+    </tbody>
+</table> 
+';
 ?>

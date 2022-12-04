@@ -1,15 +1,24 @@
 <?php
      session_start();
      if(!empty($_POST)) {
+          require 'funciones/CRUD/pedidos.php';
           require 'funciones/CRUD/detallesCarrito.php';
-          $articulo_ASIN = array_keys($_POST);
-          DELETE_productoCarrito($_SESSION['logInUsuario'], $articulo_ASIN[0]);
+
+          $usuario = $_SESSION['logInUsuario'];
+          $detallesCarrito = READ_detallesCarrito($usuario);
+          while($detalleCarrito = mysqli_fetch_array( $detallesCarrito )) {
+               $articulo_ASIN = $detalleCarrito['articulo_ASIN'];
+               CREATE_pedido($usuario, $articulo_ASIN);
+          }
+          DELETE_productosCarrito($usuario);
      }
 ?>
 <!DOCTYPE html>
-<html>
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 	<tittle></tittle>
 	<Link rel="stylesheet" type="text/css" href="estilo.css">
      <!-- CSS only -->
@@ -33,29 +42,13 @@
              <li><a href="Proveedores.html">Proveedores</a></li>
              <li><a href="carrito.php">Carrito</a></li>
               <li><a href="servicioalcliente.html">Servicio al Cliente</a></li>
-             <li><a href="iniciosesion.html">Cerrar Sesion</a></li>
+             <li><a href="iniciosesion.php">Cerrar Sesion</a></li>
           </ul>
      </nav>
      
      <h2>Carrito</h2>
      <div class="container shadow">
-          <form method="POST">
-               <?php
-               require 'funciones/imprimirTablaArticulosEnCarrito.php';
-               ?>
-          </form>
-          <form action="formPago.php">
-               <?php
-               require_once 'funciones/CRUD/detallesCarrito.php';
-               $detallesCarrito = READ_detallesCarrito($_SESSION['logInUsuario']);
-               if( mysqli_fetch_array($detallesCarrito) ) {
-                    echo '<input type="submit" class="btn btn-primary" value="Proceder con el pago">';
-               }
-               else {
-                    echo '<h2>Tu carrito esta vacio</h2>';
-               }
-               ?>
-          </form>
+        <h1>Pedido realizado con exito!</h1>
      </div>
 </body>   
-</html>     
+</html> 

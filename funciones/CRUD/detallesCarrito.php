@@ -41,4 +41,19 @@ function DELETE_productoCarrito($nombre_usuario, $articulo_ASIN) {
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 }
+function DELETE_productosCarrito($nombre_usuario) {
+    require_once __DIR__ . '/../coneccion.php';
+    require_once __DIR__ . '/usuarios.php';
+    $conn = conectar();
+
+    $usuario = READ_usuario($nombre_usuario);
+    $carrito_id = mysqli_fetch_array($usuario)['carrito_id'];
+
+    $sql = 'DELETE FROM detalles_carrito WHERE carrito_id = ?';
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $carrito_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+}
 ?>
