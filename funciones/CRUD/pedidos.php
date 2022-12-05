@@ -18,5 +18,17 @@ function CREATE_pedido($nombre_usuario, $articulo_ASIN) {
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 }
+function READ_pedidos($nombre_usuario) {
+    require_once __DIR__ . '/../coneccion.php';
+    $conn = conectar();
+    $sql = 'SELECT * FROM pedidos WHERE nombre_usuario = ?';
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 's', $nombre_usuario);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    return $result;
+}
 
 ?>

@@ -1,24 +1,10 @@
 <?php
      session_start();
-     if(!empty($_POST)) {
-          require 'funciones/CRUD/pedidos.php';
-          require 'funciones/CRUD/detallesCarrito.php';
-
-          $usuario = $_SESSION['logInUsuario'];
-          $detallesCarrito = READ_detallesCarrito($usuario);
-          while($detalleCarrito = mysqli_fetch_array( $detallesCarrito )) {
-               $articulo_ASIN = $detalleCarrito['articulo_ASIN'];
-               CREATE_pedido($usuario, $articulo_ASIN);
-          }
-          DELETE_productosCarrito($usuario);
-     }
 ?>
 <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
 	<tittle></tittle>
 	<Link rel="stylesheet" type="text/css" href="estilo.css">
      <!-- CSS only -->
@@ -26,10 +12,12 @@
      <style>
           .container {
                background-color: #b6e1fc;
-               padding: 2%;
+               margin-bottom: 3%;
+               padding-bottom: 4%;
           }
-          .table {
-               background-color: white;
+          .encabezadoPedido {
+               background-color: #6cc3f9;
+               padding-left: 1%;
           }
      </style>
 </head>
@@ -46,9 +34,9 @@
           </ul>
      </nav>
      
-     <h2>Carrito</h2>
-     <div class="container shadow">
-        <h1>Pedido realizado con exito!</h1>
-     </div>
+     <h2>Mis pedidos</h2>
+     <?php
+          require 'funciones/imprimirMisPedidos.php';
+     ?>
 </body>   
-</html> 
+</html>     

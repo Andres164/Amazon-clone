@@ -12,7 +12,7 @@
           <ul>
                <li><a href="index.php">Inicio</a></li>
                <li><a href="Articulos.php">Articulos</a></li>
-               <li><a href="Proveedores.html">Proveedores</a></li>
+               <li><a href="Pedidos.php">Mis pedidos</a></li>
                <li><a href="carrito.php">Carrito</a></li>
                <li><a href="servicioalcliente.html">Servicio al Cliente</a></li>
              <?php 
