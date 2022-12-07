@@ -1,5 +1,7 @@
 <?php
      session_start();
+     require 'funciones/CRUD/pedidos.php';
+     UPDATE_pedidosNoEntregados();
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +16,7 @@
                background-color: #b6e1fc;
                margin-bottom: 3%;
                padding-bottom: 4%;
+               max-width: 55%;
           }
           .encabezadoPedido {
                background-color: #6cc3f9;
