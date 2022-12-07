@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2022 a las 06:01:02
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Dec 07, 2022 at 11:20 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `amazon_bd`
+-- Database: `amazon_bd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `articulos`
+-- Table structure for table `articulos`
 --
 
 CREATE TABLE `articulos` (
@@ -38,7 +38,7 @@ CREATE TABLE `articulos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `articulos`
+-- Dumping data for table `articulos`
 --
 
 INSERT INTO `articulos` (`nombre_articulo`, `precio`, `stock`, `tiempo_envio`, `proveeodr_id`, `ASIN`, `precio_envio`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `articulos` (`nombre_articulo`, `precio`, `stock`, `tiempo_envio`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carrito`
+-- Table structure for table `carrito`
 --
 
 CREATE TABLE `carrito` (
@@ -59,7 +59,7 @@ CREATE TABLE `carrito` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `carrito`
+-- Dumping data for table `carrito`
 --
 
 INSERT INTO `carrito` (`nombre_usuario`, `carrito_id`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `carrito` (`nombre_usuario`, `carrito_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_carrito`
+-- Table structure for table `detalles_carrito`
 --
 
 CREATE TABLE `detalles_carrito` (
@@ -81,7 +81,7 @@ CREATE TABLE `detalles_carrito` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pedidos`
+-- Table structure for table `pedidos`
 --
 
 CREATE TABLE `pedidos` (
@@ -94,17 +94,20 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `pedidos`
+-- Dumping data for table `pedidos`
 --
 
 INSERT INTO `pedidos` (`pedido_id`, `articulo_ASIN`, `fecha_compra`, `entregado`, `fecha_entrega`, `nombre_usuario`) VALUES
-(3, 'amazongokuss', '2022-12-04 13:20:16', 0, '2022-12-06 09:20:16', 'Abel2'),
-(4, 'amazonnintsw', '2022-12-04 13:20:16', 0, '2022-12-05 09:20:16', 'Abel2');
+(3, 'amazongokuss', '2022-12-04 13:20:16', 1, '2022-12-06 09:20:16', 'Abel2'),
+(4, 'amazonnintsw', '2022-12-04 13:20:16', 1, '2022-12-05 09:20:16', 'Abel2'),
+(5, 'amazonnv2080', '2022-12-07 11:28:01', 0, '2022-12-08 07:28:01', 'abel'),
+(6, 'amazonplcogr', '2022-12-07 11:28:01', 0, '2022-12-09 07:28:01', 'abel'),
+(7, 'amazonplcogr', '2022-12-07 12:02:27', 0, '2022-12-09 08:02:27', 'Abel2');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proveedores`
+-- Table structure for table `proveedores`
 --
 
 CREATE TABLE `proveedores` (
@@ -115,7 +118,7 @@ CREATE TABLE `proveedores` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -126,7 +129,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`carrito_id`, `nombre_usuario`, `correo_electonico`, `contra`) VALUES
@@ -134,70 +137,70 @@ INSERT INTO `usuarios` (`carrito_id`, `nombre_usuario`, `correo_electonico`, `co
 (12, 'Abel2', 'abel2@gmail.com', 'Abel2');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `articulos`
+-- Indexes for table `articulos`
 --
 ALTER TABLE `articulos`
   ADD PRIMARY KEY (`ASIN`);
 
 --
--- Indices de la tabla `carrito`
+-- Indexes for table `carrito`
 --
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`carrito_id`),
   ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`);
 
 --
--- Indices de la tabla `detalles_carrito`
+-- Indexes for table `detalles_carrito`
 --
 ALTER TABLE `detalles_carrito`
   ADD PRIMARY KEY (`detalles_carrito_id`);
 
 --
--- Indices de la tabla `pedidos`
+-- Indexes for table `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`pedido_id`);
 
 --
--- Indices de la tabla `proveedores`
+-- Indexes for table `proveedores`
 --
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`proveedor_id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`nombre_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `carrito`
+-- AUTO_INCREMENT for table `carrito`
 --
 ALTER TABLE `carrito`
   MODIFY `carrito_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `detalles_carrito`
+-- AUTO_INCREMENT for table `detalles_carrito`
 --
 ALTER TABLE `detalles_carrito`
-  MODIFY `detalles_carrito_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `detalles_carrito_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `pedidos`
+-- AUTO_INCREMENT for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `proveedores`
+-- AUTO_INCREMENT for table `proveedores`
 --
 ALTER TABLE `proveedores`
   MODIFY `proveedor_id` int(11) NOT NULL AUTO_INCREMENT;
